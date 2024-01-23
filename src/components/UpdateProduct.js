@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Params, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
   const [name, setName] = useState("");
@@ -26,6 +26,7 @@ const UpdateProduct = () => {
   };
   useEffect(() => {
     getProductDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getProductDetails = async () => {
     let result = await fetch(`http://localhost:8000/product/${params.id}`);
