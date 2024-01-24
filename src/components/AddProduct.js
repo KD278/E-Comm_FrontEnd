@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const AppProduct = () => {
   const [name, setName] = useState("");
@@ -6,6 +8,7 @@ const AppProduct = () => {
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const addProduct = async () => {
     const userId = JSON.parse(localStorage.getItem("user"))._id;
@@ -25,6 +28,7 @@ const AppProduct = () => {
     result = await result.json();
     if (result) {
       alert("Product added successfully !!!");
+      navigate("/");
     }
   };
   return (

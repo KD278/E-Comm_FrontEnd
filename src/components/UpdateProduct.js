@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateProduct = () => {
   const [name, setName] = useState("");
@@ -8,28 +8,35 @@ const UpdateProduct = () => {
   const [company, setCompany] = useState("");
   const [error, setError] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
 
   const updateProduct = async () => {
     if (!name || !price || !category || !company) {
       setError(true);
       return false;
     }
-    let result = await fetch(`https://backend-sd55.onrender.com/product/${params.id}`, {
-      method: "Put",
-      body: JSON.stringify({ name, price, category, company }),
-      headers: { "Content-Type": "application/json" },
-    });
+    let result = await fetch(
+      `https://backend-sd55.onrender.com/product/${params.id}`,
+      {
+        method: "Put",
+        body: JSON.stringify({ name, price, category, company }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     result = await result.json();
     if (result) {
       alert("Product Updated Successfully !!!");
+      navigate("/");
     }
   };
   useEffect(() => {
     getProductDetails();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getProductDetails = async () => {
-    let result = await fetch(`https://backend-sd55.onrender.com/product/${params.id}`);
+    let result = await fetch(
+      `https://backend-sd55.onrender.com/product/${params.id}`
+    );
     result = await result.json();
     setName(result.name);
     setPrice(result.price);
