@@ -15,7 +15,7 @@ const SignUp = () => {
     }
   }, [navigate]);
   const collectData = async () => {
-    let result = await fetch("http://localhost:8000/register", {
+    let result = await fetch("https://backend-sd55.onrender.com/register", {
       method: "post",
       body: JSON.stringify({
         name,

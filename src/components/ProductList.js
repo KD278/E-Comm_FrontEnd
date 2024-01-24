@@ -10,14 +10,14 @@ const ProductList = () => {
   const getProducts = async () => {
     const auth = localStorage.getItem("user");
     let result = await fetch(
-      `http://localhost:8000/products/${JSON.parse(auth)._id}`
+      `https://backend-sd55.onrender.com/products/${JSON.parse(auth)._id}`
     );
     result = await result.json();
     setProducts(result);
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`http://localhost:8000/product/${id}`, {
+    let result = await fetch(`https://backend-sd55.onrender.com/product/${id}`, {
       method: "Delete",
     });
     result = await result.json();
@@ -34,7 +34,7 @@ const ProductList = () => {
     const auth = localStorage.getItem("user");
     if (key) {
       let result = await fetch(
-        `http://localhost:8000/search/${JSON.parse(auth)._id}/${key}`
+        `https://backend-sd55.onrender.com/search/${JSON.parse(auth)._id}/${key}`
       );
       result = await result.json();
       if (result) {

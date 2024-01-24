@@ -14,7 +14,7 @@ const Login = () => {
   }, [navigate]);
 
   const handleLogin = async () => {
-    let result = await fetch("http://localhost:8000/login", {
+    let result = await fetch("https://backend-sd55.onrender.com/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {

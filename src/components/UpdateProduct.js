@@ -14,7 +14,7 @@ const UpdateProduct = () => {
       setError(true);
       return false;
     }
-    let result = await fetch(`http://localhost:8000/product/${params.id}`, {
+    let result = await fetch(`https://backend-sd55.onrender.com/product/${params.id}`, {
       method: "Put",
       body: JSON.stringify({ name, price, category, company }),
       headers: { "Content-Type": "application/json" },
@@ -29,7 +29,7 @@ const UpdateProduct = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getProductDetails = async () => {
-    let result = await fetch(`http://localhost:8000/product/${params.id}`);
+    let result = await fetch(`https://backend-sd55.onrender.com/product/${params.id}`);
     result = await result.json();
     setName(result.name);
     setPrice(result.price);
