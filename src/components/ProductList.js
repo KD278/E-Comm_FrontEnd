@@ -10,16 +10,27 @@ const ProductList = () => {
   const getProducts = async () => {
     const auth = localStorage.getItem("user");
     let result = await fetch(
-      `https://backend-sd55.onrender.com/products/${JSON.parse(auth)._id}`
+      `https://backend-sd55.onrender.com/products/${JSON.parse(auth)._id}`,
+      {
+        headers: {
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
     );
     result = await result.json();
     setProducts(result);
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`https://backend-sd55.onrender.com/product/${id}`, {
-      method: "Delete",
-    });
+    let result = await fetch(
+      `https://backend-sd55.onrender.com/product/${id}`,
+      {
+        headers: {
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+        method: "Delete",
+      }
+    );
     result = await result.json();
     if (result) {
       getProducts();
@@ -34,7 +45,14 @@ const ProductList = () => {
     const auth = localStorage.getItem("user");
     if (key) {
       let result = await fetch(
-        `https://backend-sd55.onrender.com/search/${JSON.parse(auth)._id}/${key}`
+        `https://backend-sd55.onrender.com/search/${
+          JSON.parse(auth)._id
+        }/${key}`,
+        {
+          headers: {
+            authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          },
+        }
       );
       result = await result.json();
       if (result) {
@@ -42,7 +60,7 @@ const ProductList = () => {
       } else {
         getProducts();
       }
-    }else{
+    } else {
       getProducts();
     }
   };

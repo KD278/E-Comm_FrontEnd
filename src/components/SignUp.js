@@ -27,12 +27,13 @@ const SignUp = () => {
       },
     });
     result = await result.json();
-    if (result.result === "Use New Email") {
+    if (result.response === "Use New Email") {
       alert("You can't use this email !!!");
       return;
     } else {
       alert("New user created !!!");
-      localStorage.setItem("user", JSON.stringify(result));
+      localStorage.setItem("user", JSON.stringify(result.user));
+      localStorage.setItem("token", JSON.stringify(result.auth));
       navigate("/");
     }
   };

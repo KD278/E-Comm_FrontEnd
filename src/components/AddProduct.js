@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const AppProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -23,6 +22,7 @@ const AppProduct = () => {
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();

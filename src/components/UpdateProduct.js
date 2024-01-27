@@ -20,7 +20,10 @@ const UpdateProduct = () => {
       {
         method: "Put",
         body: JSON.stringify({ name, price, category, company }),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
       }
     );
     result = await result.json();
@@ -35,7 +38,12 @@ const UpdateProduct = () => {
   }, []);
   const getProductDetails = async () => {
     let result = await fetch(
-      `https://backend-sd55.onrender.com/product/${params.id}`
+      `https://backend-sd55.onrender.com/product/${params.id}`,
+      {
+        headers: {
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
     );
     result = await result.json();
     setName(result.name);
