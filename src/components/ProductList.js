@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([""]);
+  const [products, setProducts] = useState(["Loading..."]);
   useEffect(() => {
     getProducts();
   }, []);
@@ -50,7 +50,9 @@ const ProductList = () => {
         }/${key}`,
         {
           headers: {
-            authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            authorization: `bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
           },
         }
       );
@@ -64,62 +66,67 @@ const ProductList = () => {
       getProducts();
     }
   };
-  return products.result !== "No Products Found" ? (
+  return (
     <div className="product-list">
-      <h3>Product List</h3>
-      <input
-        type="text"
-        className="search-box"
-        placeholder="Search Product"
-        onChange={(e) => {
-          searchHandle(e.target.value);
-        }}
-      ></input>
-
-      <ul>
-        <li>Sr.No</li>
-        <li>Name</li>
-        <li>Price (₹)</li>
-        <li>Category</li>
-        <li>Company</li>
-        <li>Operation</li>
-      </ul>
-      {products.length > 0 ? (
-        products.map((item, index) => {
-          return (
-            <div key={index}>
-              <ul>
-                <li>{index + 1}</li>
-                <li>{item.name}</li>
-                <li>{item.price}</li>
-                <li>{item.category}</li>
-                <li>{item.company}</li>
-                <li>
-                  <button
-                    className="button"
-                    onClick={() => deleteProduct(item._id)}
-                  >
-                    Delete
-                  </button>
-                  <button className="button">
-                    <Link
-                      to={`/update/${item._id}`}
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      Update
-                    </Link>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          );
-        })
+      <h2>Products List</h2>
+      {products[0] === "Loading..." ? (
+        <h2 className="product-list">Loading...</h2>
+      ) : products.result === "No Products Found" ? (
+        <h2 className="product-list">No product available</h2>
       ) : (
-        <h1>No Result Found</h1>
+        <div>
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search Product"
+            onChange={(e) => {
+              searchHandle(e.target.value);
+            }}
+          ></input>
+          <ul>
+            <li>Sr.No</li>
+            <li>Name</li>
+            <li>Price (₹)</li>
+            <li>Category</li>
+            <li>Company</li>
+            <li>Operation</li>
+          </ul>
+          {products.length > 0 ? (
+            products.map((item, index) => {
+              return (
+                <div key={index}>
+                  <ul>
+                    <li>{index + 1}</li>
+                    <li>{item.name}</li>
+                    <li>{item.price}</li>
+                    <li>{item.category}</li>
+                    <li>{item.company}</li>
+                    <li>
+                      <button
+                        className="button"
+                        onClick={() => deleteProduct(item._id)}
+                      >
+                        Delete
+                      </button>
+                      <button className="button">
+                        <Link
+                          to={`/update/${item._id}`}
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          Update
+                        </Link>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })
+          ) : (
+            <h2>No Result Found</h2>
+          )}
+        </div>
       )}
     </div>
-  ) : (
-    <h3 className="product-list">No Product Available</h3>
   );
 };
 

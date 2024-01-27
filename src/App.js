@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import AppProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
@@ -27,7 +28,15 @@ const App = () => {
               }
             ></Route>
             <Route path="/logout" element={<h1>Logout Component</h1>}></Route>
-            <Route path="/profile" element={<h1>Profile Component</h1>}></Route>
+            <Route
+              path="/update"
+              element={
+                <h2 className="product">
+                  Please select the product from products list
+                </h2>
+              }
+            ></Route>
+            <Route path="/profile" element={<Profile />}></Route>
           </Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
