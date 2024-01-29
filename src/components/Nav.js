@@ -38,6 +38,9 @@ const Nav = () => {
               Logout ({JSON.parse(auth).name})
             </Link>
           </li>
+          <li>
+          <Link to="/emailverify">Emailverify</Link>
+        </li>
         </ul>
       ) : (
         <ul className="nav-ul nav-right">
@@ -47,9 +50,7 @@ const Nav = () => {
           <li>
             <Link to="/login">Login</Link>
           </li>
-          <li>
-            <Link to="/emailverify">emailverify</Link>
-          </li>
+         
         </ul>
       )}
     </div>
