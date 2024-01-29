@@ -18,7 +18,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
-            <Route path="/" element={<ProductList />}></Route>
+            <Route path="/products" element={<ProductList />}></Route>
             <Route path="/add" element={<AppProduct />}></Route>
             <Route
               path="/update/:id"
@@ -41,7 +41,7 @@ const App = () => {
           </Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/emailverify" element={<Verification />}></Route>
+          <Route path="/" element={<Verification />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />

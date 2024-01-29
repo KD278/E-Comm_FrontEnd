@@ -22,7 +22,7 @@ const Nav = () => {
       {auth ? (
         <ul className="nav-ul">
           <li>
-            <Link to="/">Products</Link>
+            <Link to="/products">Products</Link>
           </li>
           <li>
             <Link to="/add">Add Product</Link>
@@ -38,9 +38,6 @@ const Nav = () => {
               Logout ({JSON.parse(auth).name})
             </Link>
           </li>
-          <li>
-          <Link to="/emailverify">Emailverify</Link>
-        </li>
         </ul>
       ) : (
         <ul className="nav-ul nav-right">
