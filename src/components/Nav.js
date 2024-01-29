@@ -11,7 +11,6 @@ const Nav = () => {
     localStorage.clear("user");
     navigate("/login");
   };
-  // onClick={console.log(JSON.parse(auth)._id)}
   return (
     <div>
       <img
@@ -47,6 +46,9 @@ const Nav = () => {
           </li>
           <li>
             <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/emailverify">emailverify</Link>
           </li>
         </ul>
       )}
