@@ -19,13 +19,14 @@ const Login = () => {
       body: JSON.stringify({ email, password }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      navigate("/");
+      // navigate("/");
     } else {
       alert("Please Enter Correct Details");
     }
