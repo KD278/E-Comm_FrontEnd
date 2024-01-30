@@ -1,6 +1,6 @@
 import "./App.css";
 import Nav from "./components/Nav";
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import SignUp from "./components/SignUp";
 import PrivateComponent from "./components/PrivateComponent";
@@ -13,7 +13,7 @@ import Profile from "./components/Profile";
 const App = () => {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Footer />
     </div>
   );
