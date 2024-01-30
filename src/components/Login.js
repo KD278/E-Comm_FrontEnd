@@ -25,7 +25,7 @@ const Login = () => {
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      navigate("/");
+      // navigate("/products");
     } else {
       alert("Please Enter Correct Details");
     }

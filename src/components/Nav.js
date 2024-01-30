@@ -11,7 +11,6 @@ const Nav = () => {
     localStorage.clear("user");
     navigate("/login");
   };
-  // onClick={console.log(JSON.parse(auth)._id)}
   return (
     <div>
       <img

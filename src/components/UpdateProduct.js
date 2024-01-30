@@ -29,7 +29,7 @@ const UpdateProduct = () => {
     result = await result.json();
     if (result) {
       alert("Product Updated Successfully !!!");
-      navigate("/");
+      navigate("/products");
     }
   };
   useEffect(() => {
