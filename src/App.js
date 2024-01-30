@@ -40,7 +40,7 @@ const App = () => {
           </Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/verification/:userId" element={<Login />}></Route>
+          <Route path="/verification/:userId" element={<VerificationComponent />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />
