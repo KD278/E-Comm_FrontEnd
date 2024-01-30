@@ -28,7 +28,7 @@ const AppProduct = () => {
     result = await result.json();
     if (result) {
       alert("Product added successfully !!!");
-      navigate("/");
+      navigate("/products");
     }
   };
   return (

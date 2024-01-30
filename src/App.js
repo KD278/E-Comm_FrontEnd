@@ -9,6 +9,7 @@ import AppProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
 import Profile from "./components/Profile";
+import Verification from "./components/Verification";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
-            <Route path="/" element={<ProductList />}></Route>
+            <Route path="/products" element={<ProductList />}></Route>
             <Route path="/add" element={<AppProduct />}></Route>
             <Route
               path="/update/:id"
@@ -40,6 +41,7 @@ const App = () => {
           </Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Verification />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />

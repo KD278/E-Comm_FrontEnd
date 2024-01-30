@@ -9,7 +9,7 @@ const Login = () => {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/");
+      navigate("/products");
     }
   }, [navigate]);
 
@@ -19,13 +19,14 @@ const Login = () => {
       body: JSON.stringify({ email, password }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      navigate("/");
+      // navigate("/products");
     } else {
       alert("Please Enter Correct Details");
     }
