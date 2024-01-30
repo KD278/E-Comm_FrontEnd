@@ -9,7 +9,7 @@ const Login = () => {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/products");
+      navigate("/");
     }
   }, [navigate]);
 
@@ -25,7 +25,7 @@ const Login = () => {
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      // navigate("/products");
+      // navigate("/");
     } else {
       alert("Please Enter Correct Details");
     }
