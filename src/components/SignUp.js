@@ -11,7 +11,7 @@ const SignUp = () => {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/products");
+      navigate("/");
     }
   }, [navigate]);
   const collectData = async () => {
@@ -34,7 +34,7 @@ const SignUp = () => {
       alert("New user created !!!");
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      navigate("/products");
+      navigate("/");
     }
   };
   return (
