@@ -17,7 +17,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
-            <Route path="/products" element={<ProductList />}></Route>
+            <Route path="/" element={<ProductList />}></Route>
             <Route path="/add" element={<AppProduct />}></Route>
             <Route
               path="/update/:id"
