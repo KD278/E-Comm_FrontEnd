@@ -20,7 +20,7 @@ const VerificationComponent = () => {
 
   return (
     <div>
-      <h1>Verification Page</h1>
+      <h1>Email verified successfully !!!</h1>
       {/* Add your content here */}
     </div>
   );
