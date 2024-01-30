@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const VerificationComponent = () => {
+const Verify = () => {
   const { userId } = useParams();
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const VerificationComponent = () => {
   );
 };
 
-export default VerificationComponent;
+export default Verify;
