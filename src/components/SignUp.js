@@ -31,10 +31,29 @@ const SignUp = () => {
       alert("You can't use this email !!!");
       return;
     } else {
-      alert("New user created !!!");
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      navigate("/");
+      localStorage.setItem("Verifying", JSON.stringify("Verifying"));
+      try {
+        const response = await fetch(
+          "https://backend-sd55.onrender.com/send-otp",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        const data = await response.json();
+        if (data.message) {
+          alert(`OTP sent to ${email}`);
+          navigate("/verifyUser");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
   return (

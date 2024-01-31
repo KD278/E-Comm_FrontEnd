@@ -25,24 +25,26 @@ const Login = () => {
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-      localStorage.setItem("Verifying", JSON.stringify("Verifying"));
-      try {
-        const response = await fetch("https://backend-sd55.onrender.com/send-otp", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
+      navigate("/");
+      localStorage.setItem("Verifying", JSON.stringify("False"));
+      // localStorage.setItem("Verifying", JSON.stringify("Verifying"));
+      // try {
+      //   const response = await fetch("https://backend-sd55.onrender.com/send-otp", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ email }),
+      //   });
   
-        const data = await response.json();
-        if (data.message) {
-          alert(`OTP sent to ${email}`);
-          navigate("/verifyUser");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      //   const data = await response.json();
+      //   if (data.message) {
+      //     alert(`OTP sent to ${email}`);
+      //     navigate("/verifyUser");
+      //   }
+      // } catch (error) {
+      //   console.error("Error:", error);
+      // }
     } else {
       alert("Please Enter Correct Details");
     }
