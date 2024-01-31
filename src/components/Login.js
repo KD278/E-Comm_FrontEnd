@@ -25,6 +25,7 @@ const Login = () => {
     if (result.user) {
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
+      alert("User Loggedin Successfully !!!");
       navigate("/");
       localStorage.setItem("Verifying", JSON.stringify("False"));
       // localStorage.setItem("Verifying", JSON.stringify("Verifying"));
