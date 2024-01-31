@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const [products, setProducts] = useState(["Loading..."]);
+  localStorage.setItem("Verifying", JSON.stringify("False"));
   useEffect(() => {
     getProducts();
   }, []);

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 //Link is used to link the component to the particular routing link
 const Nav = () => {
   const auth = localStorage.getItem("user");
+  const Verifying = localStorage.getItem("Verifying");
   //useNavigate rerender the component if there is any change in the navigation
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ const Nav = () => {
         src="https://tse1.mm.bing.net/th/id/OIP.flVCRiphsKFuSEZewVEJ7QHaH_?rs=1&pid=ImgDetMain"
       />
 
-      {auth ? (
+      {JSON.parse(Verifying) === "False" ? (
         <ul className="nav-ul">
           <li>
             <Link to="/">Products</Link>
