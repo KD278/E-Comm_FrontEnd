@@ -9,7 +9,6 @@ import AppProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
 import Profile from "./components/Profile";
-import Verify from "./components/Verify";
 const App = () => {
   return (
     <div className="App">
@@ -40,7 +39,6 @@ const App = () => {
           </Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/verification/:userId" element={<Verify />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />
